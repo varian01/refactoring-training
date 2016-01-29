@@ -32,7 +32,7 @@ namespace Refactoring
 
                     if (EnteredPasswordIsValid(enteredUsername, enteredPassword))
                     {
-                        DisplayWelcomeMessage(enteredUsername);
+                        DisplayLoginMessage(enteredUsername);
 
                         double balance = EnterRemainingBalance(enteredUsername);
 
@@ -130,14 +130,14 @@ namespace Refactoring
             PromptToExitConsole();
         }
 
-        public static void DisplayWelcomeMessage()
+        private static void DisplayWelcomeMessage()
         {
             // Write welcome message
             Console.WriteLine("Welcome to TUSC");
             Console.WriteLine("---------------");
         }
 
-        public static string EnterUserName()
+        private static string EnterUserName()
         {
             // Prompt for user input
             Console.WriteLine();
@@ -145,14 +145,14 @@ namespace Refactoring
             return Console.ReadLine();
         }
 
-        public static string EnterPassword()
+        private static string EnterPassword()
         {
             // Prompt for user input
             Console.WriteLine("Enter Password:");
             return Console.ReadLine();
         }
 
-        public static bool EnteredUserNameIsValid(string enteredUserName)
+        private static bool EnteredUserNameIsValid(string enteredUserName)
         {
             if (!string.IsNullOrEmpty(enteredUserName))
             {
@@ -169,7 +169,7 @@ namespace Refactoring
             return false;
         }
 
-        public static bool EnteredPasswordIsValid(string username, string password)
+        private static bool EnteredPasswordIsValid(string username, string password)
         {
             // Validate Password
             foreach (var user in listOfUsers)
@@ -184,7 +184,7 @@ namespace Refactoring
             return false;
         }
 
-        public static void DisplayWelcomeMessage(string enteredUserName)
+        private static void DisplayLoginMessage(string enteredUserName)
         {
             // Show welcome message
             Console.Clear();
@@ -194,7 +194,7 @@ namespace Refactoring
             Console.ResetColor();
         }
 
-        public static double EnterRemainingBalance(string username)
+        private static double EnterRemainingBalance(string username)
         {
             double balance = 0;
 
@@ -210,14 +210,14 @@ namespace Refactoring
             return balance;
         }
 
-        public static void DisplayRemainingBalance(double bal)
+        private static void DisplayRemainingBalance(double bal)
         {
             // Show balance 
             Console.WriteLine();
             Console.WriteLine("Your balance is " + bal.ToString("C"));
         }
 
-        public static void DisplayProducts()
+        private static void DisplayProducts()
         {
 
             // Prompt for user input
@@ -230,7 +230,7 @@ namespace Refactoring
             Console.WriteLine(listOfProducts.Count + 1 + ": Exit");
         }
 
-        public static int EnterProductSelection()
+        private static int EnterProductSelection()
         {
             // Prompt for user input
             Console.WriteLine("Enter a number:");
@@ -242,7 +242,7 @@ namespace Refactoring
             return num;
         }
 
-        public static void UpdateBalance(string username,double balance)
+        private static void UpdateBalance(string username, double balance)
         {
             // Update balance
             foreach (var user in listOfUsers)
@@ -255,21 +255,21 @@ namespace Refactoring
             }
         }
 
-        public static void WriteOutNewBalance()
+        private static void WriteOutNewBalance()
         {
             // Write out new balance
             string json = JsonConvert.SerializeObject(listOfUsers, Formatting.Indented);
             File.WriteAllText(@"Data/Users.json", json);
         }
 
-        public static void WriteOutNewQuantities()
+        private static void WriteOutNewQuantities()
         {
             // Write out new quantities
             string json2 = JsonConvert.SerializeObject(listOfProducts, Formatting.Indented);
             File.WriteAllText(@"Data/Products.json", json2);
         }
 
-        public static int EnterAmountToPurchase()
+        private static int EnterAmountToPurchase()
         {
             // Prompt for user input
             Console.WriteLine("Enter amount to purchase:");
@@ -279,7 +279,7 @@ namespace Refactoring
             return quantity;
         }
 
-        public static bool HasSufficientFunds(double balance, int itemSelected, int quantity)
+        private static bool HasSufficientFunds(double balance, int itemSelected, int quantity)
         {
             // Check if balance - quantity * price is less than 0
             if (balance - listOfProducts[itemSelected].Price * quantity < 0)
@@ -296,7 +296,7 @@ namespace Refactoring
             return true;
         }
 
-        public static bool QuantityIsInStock(int itemSelected, int quantity)
+        private static bool QuantityIsInStock(int itemSelected, int quantity)
         {
             // Check if quantity is less than quantity
             if (listOfProducts[itemSelected].Qty <= quantity)
@@ -313,7 +313,7 @@ namespace Refactoring
             return true;
         }
 
-        public static void PromptToExitConsole()
+        private static void PromptToExitConsole()
         {
             Console.WriteLine();
             Console.WriteLine("Press Enter key to exit");
