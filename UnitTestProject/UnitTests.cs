@@ -70,7 +70,7 @@ namespace UnitTestProject
                 {
                     Console.SetIn(reader);
 
-                    Tusc.Start(users, products);
+                    Tusc.Start();
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace UnitTestProject
                 {
                     Console.SetIn(reader);
 
-                    Tusc.Start(users, products);
+                    Tusc.Start();
                 }
 
                 Assert.IsTrue(writer.ToString().Contains("You entered an invalid user"));
@@ -104,7 +104,7 @@ namespace UnitTestProject
                 {
                     Console.SetIn(reader);
 
-                    Tusc.Start(users, products);
+                    Tusc.Start();
                 }
             }
         }
@@ -120,7 +120,7 @@ namespace UnitTestProject
                 {
                     Console.SetIn(reader);
 
-                    Tusc.Start(users, products);
+                    Tusc.Start();
                 }
 
                 Assert.IsTrue(writer.ToString().Contains("You entered an invalid password"));
@@ -138,7 +138,7 @@ namespace UnitTestProject
                 {
                     Console.SetIn(reader);
 
-                    Tusc.Start(users, products);
+                    Tusc.Start();
                 }
 
                 Assert.IsTrue(writer.ToString().Contains("Purchase cancelled"));
@@ -161,7 +161,7 @@ namespace UnitTestProject
                 {
                     Console.SetIn(reader);
 
-                    Tusc.Start(tempUsers, products);
+                    Tusc.Start();
                 }
 
                 Assert.IsTrue(writer.ToString().Contains("You do not have enough money to buy that"));
@@ -183,7 +183,7 @@ namespace UnitTestProject
                 {
                     Console.SetIn(reader);
 
-                    Tusc.Start(users, tempProducts);
+                    Tusc.Start();
                 }
 
                 Assert.IsTrue(writer.ToString().Contains("is out of stock"));
